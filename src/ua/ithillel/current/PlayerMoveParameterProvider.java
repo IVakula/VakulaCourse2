@@ -2,22 +2,23 @@ package ua.ithillel.current;
 
 import java.util.Scanner;
 
-public class PlayerCoordinateProvider implements CoordinateProvider {
+public class PlayerMoveParameterProvider implements MoveParameterProvider {
 
-    private static final char PLAYER_SYMBOL = 'X';
+    public static final char PLAYER_SYMBOL = 'X';
     private final int fieldSize;
     private final Scanner scanner;
 
-    public PlayerCoordinateProvider(int fieldSize, Scanner scanner) {
+    public PlayerMoveParameterProvider(int fieldSize, Scanner scanner) {
         this.fieldSize = fieldSize;
         this.scanner = scanner;
     }
 
+
     @Override
-    public MoveResult provideCoordinate() {
+    public MoveParameters provide() {
         int vertical = chooseCoordinate('v');
         int horizontal = chooseCoordinate('h');
-        return new MoveResult(PLAYER_SYMBOL, new Coordinate(vertical, horizontal));
+        return new MoveParameters(PLAYER_SYMBOL, new Coordinate(vertical, horizontal));
     }
 
     private int chooseCoordinate(char coordinateSymbol) {

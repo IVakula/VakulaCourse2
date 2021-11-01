@@ -1,10 +1,10 @@
 package ua.ithillel.current;
 
-public class MoveResult {
+public class MoveParameters {
     private final char symbol;
     private final Coordinate coordinate;
 
-    public MoveResult(char symbol, Coordinate coordinate) {
+    public MoveParameters(char symbol, Coordinate coordinate) {
         this.symbol = symbol;
         this.coordinate = coordinate;
     }
