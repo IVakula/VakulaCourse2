@@ -28,7 +28,7 @@ public class PhoneBook {
     }
 
 
-    public List<Entry> findALL(String name) {
+    public List<Entry> findAll(String name) {
         List<Entry> resultList = new ArrayList<>();
         for (Entry entry : entryList) {
             if (entry.getName().equals(name)) {

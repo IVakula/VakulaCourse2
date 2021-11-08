@@ -8,12 +8,12 @@ public class Task1 {
     }
 
     public static void doCountOccurrence() {
-        List<String> list = List.of("hello", "123", "cat", "rat ", "dog", "hello", "123",
+        List<String> list = List.of("hello", "123", "cat", "rat", "dog", "hello", "123",
                 "cat", "dog", "dog", "hello", "123", "cat", "dog", "dog", "hello", "123", "cat", "dog", "dog");
 
         String string1 = "dog";
         String string2 = "rat";
-        String string3 = "say";
+        String string3 = "do";
 
         System.out.println(string1 + ": " + countOccurrence(list, string1));
         System.out.println(string2 + ": " + countOccurrence(list, string2));
@@ -22,8 +22,9 @@ public class Task1 {
 
     public static int countOccurrence(List<String> list, String string) {
         int count = 0;
+
         for (String s : list) {
-            if (s.contains(string)) {
+            if (s.equals(string)) {
                 count++;
             }
         }

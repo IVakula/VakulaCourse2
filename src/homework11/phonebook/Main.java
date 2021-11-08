@@ -33,7 +33,7 @@ public class Main {
     }
 
     static void doFinAll(PhoneBook phoneBook, String inputName) {
-        List <Entry> resultList = phoneBook.findALL(inputName);
+        List <Entry> resultList = phoneBook.findAll(inputName);
         if (resultList.isEmpty()) {
             System.out.println(inputName + ": Entries not found");
         } else {
