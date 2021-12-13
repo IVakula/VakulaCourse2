@@ -14,7 +14,7 @@ public abstract class AbstractLoggerConfigurationLoader<T extends BaseLoggerConf
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
                 bufferedReader.lines().forEach(line -> oneLineProcessing(line, configuration));
             } catch (IOException e) {
-                System.out.println("Error");
+                e.printStackTrace();
             }
             return configuration;
         }

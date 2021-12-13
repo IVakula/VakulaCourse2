@@ -3,13 +3,13 @@ package homework16_2;
 import java.time.LocalDateTime;
 
 public abstract class AbstractLogger<T extends BaseLoggerConfiguration> implements MyLogger {
-    protected final T configuration;
+    private final T configuration;
 
     public AbstractLogger(T configuration) {
         this.configuration = configuration;
     }
 
-    protected abstract void writeToFile(String message, LoggingLevel loggingLevel);
+    abstract void writeToFile(String message, LoggingLevel loggingLevel);
 
     protected boolean checkLevel(LoggingLevel loggingLevel) {
         if (LoggingLevel.DEBUG.equals(configuration.getLevel())) {
@@ -27,5 +27,9 @@ public abstract class AbstractLogger<T extends BaseLoggerConfiguration> implemen
     public void info(String message) {
         writeToFile(String.format(configuration.getFormatString(),
                 LocalDateTime.now(), "INFO", message), LoggingLevel.INFO);
+    }
+
+    public T getConfiguration() {
+        return configuration;
     }
 }

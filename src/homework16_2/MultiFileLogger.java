@@ -18,10 +18,10 @@ public class MultiFileLogger extends AbstractLogger<FileLoggerConfiguration> {
         if (currentFileName == null) {
             currentFileName = generateNewFileName();
         }
-        File file = new File(configuration.getFile().concat(currentFileName));
-        if (file.exists() && file.length() >= configuration.getFileSize()) {
+        File file = new File(getConfiguration().getFile().concat(currentFileName));
+        if (file.exists() && file.length() >= getConfiguration().getFileSize()) {
             currentFileName = generateNewFileName();
-            file = new File(configuration.getFile().concat(currentFileName));
+            file = new File(getConfiguration().getFile().concat(currentFileName));
         }
         if (checkLevel(loggingLevel)) {
             try {
