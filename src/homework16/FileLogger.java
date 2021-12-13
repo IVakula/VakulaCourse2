@@ -12,11 +12,11 @@ public class FileLogger extends AbstractLogger {
 
     @Override
     public void writeToFile(String message, LoggingLevel loggingLevel) {
-        File file = new File(configuration.getFile());
-        if (file.exists() && file.length() >= configuration.getFileSize()) {
+        File file = new File(getConfiguration().getFile());
+        if (file.exists() && file.length() >= getConfiguration().getFileSize()) {
             throw new FileMaxSizeReachedException(String.format("Max file size: %s, current size: %s, file path: %s",
-                    configuration.getFileSize(), file.length(),
-                    configuration.getFile()));
+                    getConfiguration().getFileSize(), file.length(),
+                    getConfiguration().getFile()));
         }
         if (checkLevel(loggingLevel)) {
             try {

@@ -11,18 +11,14 @@ public class FileLoggerConfigurationLoader {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
                 bufferedReader.lines().forEach(line -> {
-                    if (line.startsWith("FILE:")) {
-                        configuration.setFileName(line.split(":")[1].trim());
-                    } else if (line.startsWith("LEVEL:")) {
-                        configuration.setLevel(LoggingLevel.valueOf(line.split(":")[1].trim()));
-                    } else if (line.startsWith("MAX-SIZE:")) {
-                        configuration.setFileSize(Long.parseLong(line.split(":")[1].trim()));
-                    } else if (line.startsWith("FORMAT:")) {
-                        configuration.setFormatString(line.split("AT:")[1].trim());
+                    for (Fields field: Fields.values()) {
+                        if (line.startsWith(field.getDescription())){
+                            field.fieldLoad(line,configuration);
+                        }
                     }
                 });
             } catch (IOException e) {
-                System.out.println("Error");
+                e.printStackTrace();
             }
             return configuration;
         }

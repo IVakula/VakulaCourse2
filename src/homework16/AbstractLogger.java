@@ -3,7 +3,7 @@ package homework16;
 import java.time.LocalDateTime;
 
 public abstract class AbstractLogger implements MyLogger {
-    protected final FileLoggerConfiguration configuration;
+    private final FileLoggerConfiguration configuration;
 
     public AbstractLogger(FileLoggerConfiguration configuration) {
         this.configuration = configuration;
@@ -27,5 +27,9 @@ public abstract class AbstractLogger implements MyLogger {
     public void info(String message) {
         writeToFile(String.format(configuration.getFormatString(),
                 LocalDateTime.now(), "INFO", message), LoggingLevel.INFO);
+    }
+
+    protected FileLoggerConfiguration getConfiguration() {
+        return configuration;
     }
 }
